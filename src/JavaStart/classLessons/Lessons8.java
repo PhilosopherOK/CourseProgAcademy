@@ -6,7 +6,7 @@ import java.io.PrintWriter;
 import java.util.Scanner;
 
 public class Lessons8 {
-    public static void main(String[] args) {
+    public static void main1(String[] args) {
         String[] goods = new String[]{"Snikers", "Mars", "Kit-Kat", "Lion"};
         int[] prices = new int[]{30, 30, 35, 20};
         int[] n = new int[]{210, 180, 120, 300};
@@ -43,7 +43,7 @@ public class Lessons8 {
         }
         return result;
     }
-    public static void main1(String[] args) {
+    public static void main(String[] args) {
         // TODO Auto-generated method stub
 
         File file1 = new File("abc.txt");

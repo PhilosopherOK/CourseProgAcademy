@@ -8,15 +8,15 @@ public class LargestWordInAString {
         String str = scanner.nextLine();
         searchingMaxWord(str);
     }
-    public static int searchingMaxWord(String str){
+    public static String searchingMaxWord(String str){
         String [] massiveStrings = str.split("\s+");
-        int max = 0;
-        for (int i = 0; i < massiveStrings.length; i++) {
-            if(massiveStrings[i].length() > max){
-                max = massiveStrings[i].length();
+        String maxStr = massiveStrings[0];
+        for (int i = 1; i < massiveStrings.length; i++) {
+            if(maxStr.length() < massiveStrings[i].length()){
+                maxStr = massiveStrings[i];
             }
         }
-        System.out.println("Largest word in the string equals is "+ max + " letter");
-        return max;
+        System.out.println("Largest word in the string is "+ maxStr);
+        return maxStr;
     }
 }
