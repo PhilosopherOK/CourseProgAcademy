@@ -1,6 +1,5 @@
 package JavaOOP.HW2;
 
-import java.util.Random;
 
 /*
 Напишіть програму з класом, в якому є поле -
@@ -9,6 +8,8 @@ import java.util.Random;
 копію масиву (з даного об'єкта), а на основі переданого
 аргументом масиву створює об'єкт відповідного класу
  */
+import java.util.Random;
+
 public class Main5 {
     public static void main(String[] args) {
         Random random = new Random();
