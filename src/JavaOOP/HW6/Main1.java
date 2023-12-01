@@ -13,13 +13,7 @@ public class Main1 {
     public static void main(String[] args) {
         String str = "hello";
         int index = 2;
-        MyFunctionalInterface result = (new MyFunctionalInterface() {
-            @Override
-            public char takeCharFromStr(String str, int index) {
-                return str.charAt(index);
-            }
-        });
-        System.out.println(result.takeCharFromStr(str, index));
+        MyFunctionalInterface result = ((str1, index1) -> str.charAt(index));
     }
 }
 

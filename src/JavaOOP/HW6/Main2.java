@@ -1,5 +1,4 @@
 package JavaOOP.HW6;
-
 /*
 2. Напишіть програму, в якій є клас з закритим текстовим полем і два відкритих
 методи: один дозволяє присвоїти значення полю, інший результатом повертає
@@ -9,13 +8,19 @@ package JavaOOP.HW6;
 відповідний метод об’єкта.
  */
 public class Main2 {
-    ClassWithString classWithString = new ClassWithString();
+    public static void main(String[] args) {
+        ClassWithString classWithString = new ClassWithString();
+        GetStr getStrFunctional = classWithString::getStr;
+        SetStr setStrFunctional = (str) -> classWithString.setStr(str);
+    }
 }
 
+@FunctionalInterface
 interface GetStr {
     public String getStr();
 }
 
+@FunctionalInterface
 interface SetStr {
     public void setStr(String str);
 }
