@@ -1,6 +1,7 @@
 package Tsimbaliuk.HW7;
 
 /*
+делал ранее
 Класс ObjectФайл
 1. Создайте класс описывающий человека (создайте метод
 выводящий информацию о человеке)
@@ -16,4 +17,7 @@ package Tsimbaliuk.HW7;
  */
 
 public class Main {
+    public static void main(String[] args) {
+        
+    }
 }
