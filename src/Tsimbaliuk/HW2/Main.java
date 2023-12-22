@@ -2,11 +2,7 @@ package Tsimbaliuk.HW2;
 
 import Tsimbaliuk.HW3.WriteStudent;
 
-import java.util.Arrays;
-import java.util.Comparator;
-
 /*
-Задание для самостоятельной проработки. Основной уровень.
 1) Создать класс Human.
 Поля:
 ● String name (имя)
@@ -58,13 +54,10 @@ public class Main {
         System.out.println(csvStudent);
         System.out.println(student.fromCSVString(csvStudent));
 
-//        Student student = WriteStudent.takeStudent();
-//        WriteStudent.addedStudentToGroup(student, group);
-//        group.addStudent(new Student("Ksenia6", "Gendzo1", Gender.Man, 11, "A"));
-
+        Student student2 = WriteStudent.takeStudent();
+        WriteStudent.addedStudentToGroup(student2, group);
+        group.addStudent(new Student("Ksenia6", "Gendzo1", Gender.Man, 11));
         System.out.println(group.toString());
-
-
     }
 }
 

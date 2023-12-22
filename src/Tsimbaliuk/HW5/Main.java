@@ -1,11 +1,12 @@
 package Tsimbaliuk.HW5;
 
 /*
-Многопоточное программирование часть 1Файл
 1) Создайте сто потоков которые будут вычислять факториал
 числа равного номеру этого потока и выводить результат на
 экран.
  */
+import java.math.BigInteger;
+
 public class Main {
     public static void main(String[] args) throws InterruptedException {
         for (int i = 1; i <= 100; i++) {
@@ -18,6 +19,7 @@ public class Main {
 
 class MyThread extends Thread {
     int value;
+    BigInteger bigInteger = BigInteger.ONE;
 
     public MyThread(int value) {
         this.value = value;
@@ -26,13 +28,12 @@ class MyThread extends Thread {
     @Override
     public void run() {
         if (value == 1) {
-            System.out.println(value);
+            System.out.println(bigInteger.toString());
         } else {
-            long result = 1;
             for (int i = 2; i <= value; i++) {
-                result *= i;
+                bigInteger = bigInteger.multiply(BigInteger.valueOf(i));
             }
-            System.out.println(result);
+            System.out.println(bigInteger.toString());
         }
     }
 }

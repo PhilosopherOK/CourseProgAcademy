@@ -1,8 +1,6 @@
 package Tsimbaliuk.HW1;
 
 /*
-Задание для самостоятельной проработки.
-Продвинутый уровень.
 1) Создайте класс TextTransformer.
 Метод:
 ● String transform(String text) — Переводит текст в верхний регистр. Пример hello→ HELLO
@@ -16,7 +14,7 @@ transform(String text) — Каждая нечетная буква больша
 ● File file
 Методы:
 ● void saveTextToFile(String text) — Сначала преобразует одним из трансформеров (поле
-transformer) строку, после чего сохранить ее в файл(поле file)
+transformer) строку, после чего сохранить ее в файл(поле file).
  */
 
 import java.io.File;
