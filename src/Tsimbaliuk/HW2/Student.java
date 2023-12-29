@@ -2,6 +2,8 @@ package Tsimbaliuk.HW2;
 
 import Tsimbaliuk.HW3.CSVConverter;
 
+import java.util.Objects;
+
 /*
 Класс Студент должен реализовывать этот интерфейс. Логика реализации следующая — на
 основе Студента создать строку с его CSV представлением и наоборот на основе этой строки
@@ -58,5 +60,18 @@ public class Student extends Human implements CSVConverter {
                 arrayOfStudentValues[2] == "Man"? Gender.Man:Gender.Woman, Integer.parseInt(arrayOfStudentValues[3]));
         student.setGroupName(arrayOfStudentValues[4]);
         return student;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Student student = (Student) o;
+        return id == student.id && Objects.equals(groupName, student.groupName);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, groupName);
     }
 }

@@ -2,6 +2,7 @@ package Tsimbaliuk.HW2;
 
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.Objects;
 
 public class Group {
 
@@ -82,4 +83,26 @@ public class Group {
         this.students = students;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Group group = (Group) o;
+        return Objects.equals(groupName, group.groupName) && Arrays.equals(students, group.students);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = Objects.hash(groupName);
+        result = 31 * result + Arrays.hashCode(students);
+        return result;
+    }
+    public boolean checkingIdenticalStudents(){
+        for (int i = 0; i < students.length - 1; i++) {
+            if(students[i].equals(students[i + 1])){
+                return true;
+            }
+        }
+        return false;
+    }
 }

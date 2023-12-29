@@ -1,23 +1,61 @@
 package Tsimbaliuk.HW7;
 
 /*
-делал ранее
-Класс ObjectФайл
-1. Создайте класс описывающий человека (создайте метод
-выводящий информацию о человеке)
-2. На его основе создайте класс студент (переопределите
-метод вывода информации)
-3. Создайте класс группа — который содержит массив из
-объектов класса студент. Реализуйте метод поиска студента
-по фамилии.
-4. Используя стандартный методы сериализации создайте
-мини базу данных для работы с группами студентов
-(возможность записи и чтения базы из файла по запросу
-пользователя).
+1)Реализуйте корректные методы equals, hashCode для классов Человек, Студент и
+Группа. OK
+2)Реализуйте вспомогательный метод для проверки факта отсутствия эквивалентных
+студентов в группе OK
+3)Создайте класс-контейнер типа стек (класс в который можно добавлять и удалять
+объекты других классов, только в вершину стека), в который можно сохранять объекты
+произвольного типа. Создайте стек на основе массива Object.
+Реализуйте методы:
+● public void push(Object obj) добавления элемента в стек
+● public Object pop() получение с удалением элемента из вершины стека
+● public Object peek() получение элемента с вершины стека без удаления.
  */
+
+import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
         
     }
+}
+
+class MyStack{
+    int index;
+    Object [] array = new Object[10];
+
+    public MyStack() {
+        index = 0;
+    }
+
+    public Object peek(){
+        return array[index];
+    }
+    public Object pop(){
+        Object o = array[index];
+        array[index] = null;
+        index--;
+        selfReduce();
+        return o;
+    }
+    public void push(Object object){
+        selfAggrandizement();
+        array[index] = object;
+        index++;
+    }
+    public void selfAggrandizement(){
+        if(array[array.length - 1] == null){
+            Object[] newArray = Arrays.copyOf(array, array.length * 2);
+            array = newArray;
+        }
+    }
+    public void selfReduce(){
+        if(array[array.length / 4] == null && array.length != 10){
+            Object[] newArray = Arrays.copyOf(array, array.length / 2);
+            array = newArray;
+        }
+    }
+
 }
