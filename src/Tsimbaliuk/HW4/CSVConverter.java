@@ -1,4 +1,4 @@
-package Tsimbaliuk.HW3;
+package Tsimbaliuk.HW4;
 /*
 Продвинутый уровень.
 1) Объявите интерфейс
@@ -10,7 +10,7 @@ public Student fromCSVString (String str);
 основе Студента создать строку с его CSV представлением и наоборот на основе этой строки
 создать Студента.
  */
-import Tsimbaliuk.HW2.Student;
+import Tsimbaliuk.HW3.Student;
 
 public interface CSVConverter{
     public String toCSVString();

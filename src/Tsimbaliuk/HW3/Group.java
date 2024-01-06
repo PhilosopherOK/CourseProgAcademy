@@ -1,19 +1,17 @@
-package Tsimbaliuk.HW2;
+package Tsimbaliuk.HW3;
 
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.Objects;
+import java.util.*;
 
 public class Group {
 
     String groupName;
-    Student[] students = new Student[10];
+    ArrayList<Student> students = new ArrayList<>(10);
 
 
     public boolean removeStudentByID(int id) {
-        for (int i = 0; i < students.length; i++) {
-            if (students[i].id == id) {
-                students[i] = null;
+        for (int i = 0; i < students.size(); i++) {
+            if (students.get(i).getId() == id) {
+                students.remove(i);
                 return true;
             }
         }
@@ -21,20 +19,19 @@ public class Group {
     }
 
     public Student searchStudentByLastName(String lastName) throws StudentNotFoundException {
-        for (int i = 0; i < students.length; i++) {
-            if (students[i].lastName == lastName)
-                return students[i];
+        for (int i = 0; i < students.size(); i++) {
+            if (students.get(i).getLastName().equals(lastName)) {
+                return students.get(i);
+            }
         }
         throw new StudentNotFoundException();
     }
 
     public void addStudent(Student student) throws GroupOverflowException {
-        for (int i = 0; i < students.length; i++) {
-            if (students[i] == null) {
-                students[i] = student;
-                student.setGroupName(groupName);
-                return;
-            }
+        if (students.get(9) == null) {
+            students.add(student);
+            student.setGroupName(groupName);
+            return;
         }
         throw new GroupOverflowException();
     }
@@ -44,7 +41,7 @@ public class Group {
     }
 
     public void sortStudentsByLastName() {
-        Arrays.sort(students, new Comparator<Student>() {
+        Collections.sort(students, new Comparator<Student>() {
             @Override
             public int compare(Student student, Student student2) {
                 if (student.lastName.charAt(0) > student2.lastName.charAt(0)) {
@@ -63,7 +60,7 @@ public class Group {
         sortStudentsByLastName();
         return "Group{" +
                 "groupName='" + groupName + '\'' +
-                ", students=" + Arrays.toString(students) +
+                ", students=" + students +
                 '}';
     }
 
@@ -75,11 +72,11 @@ public class Group {
         this.groupName = groupName;
     }
 
-    public Student[] getStudents() {
+    public ArrayList<Student> getStudents() {
         return students;
     }
 
-    public void setStudents(Student[] students) {
+    public void setStudents(ArrayList<Student> students) {
         this.students = students;
     }
 
@@ -88,19 +85,23 @@ public class Group {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Group group = (Group) o;
-        return Objects.equals(groupName, group.groupName) && Arrays.equals(students, group.students);
+        return Objects.equals(groupName, group.groupName) && Objects.equals(students, group.students);
     }
 
     @Override
     public int hashCode() {
-        int result = Objects.hash(groupName);
-        result = 31 * result + Arrays.hashCode(students);
-        return result;
+        return Objects.hash(groupName, students);
     }
-    public boolean checkingIdenticalStudents(){
-        for (int i = 0; i < students.length - 1; i++) {
-            if(students[i].equals(students[i + 1])){
+
+    public boolean checkingIdenticalStudents() {
+        for (int i = 0; i < students.size(); i++) {
+            Student student = students.get(i);
+            students.remove(student);
+            if(students.contains(student)){
+                students.add(student);
                 return true;
+            }else {
+                students.add(student);
             }
         }
         return false;

@@ -1,4 +1,4 @@
-package Tsimbaliuk.HW2;
+package Tsimbaliuk.HW3;
 
 public enum Gender {
     Man, Woman;

@@ -1,4 +1,4 @@
-package Tsimbaliuk.HW1;
+package Tsimbaliuk.HW2;
 
 /*
 1) Создайте класс TextTransformer.

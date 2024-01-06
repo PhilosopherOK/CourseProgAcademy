@@ -1,72 +1,88 @@
 package Tsimbaliuk.HW6;
 
-import java.io.*;
+import java.math.BigInteger;
+import java.util.*;
 
 /*
-2) Реализуйте программу многопоточного копирования файла
-блоками, с выводом прогресса на экран.
+2) Написать код для многопоточного подсчета суммы элементов
+массива целых чисел. Сравнить скорость подсчета с простым
+алгоритмом.
  */
 public class Main2 {
     public static void main(String[] args) throws InterruptedException {
-        File folderIn = new File("A.csv");
-        File folderOut = new File("C.csv");
-        folderOut.mkdirs();
-        FolderIn folderInThr = new FolderIn(folderIn);
-        folderInThr.start();
-        FolderOut folderOutThr = new FolderOut(folderOut, folderInThr.getInputStream());
-        folderOutThr.start();
-        folderInThr.join();
-        folderOutThr.join();
-        System.out.println(folderOutThr.getHowMuchTransferTo());
+        Random random = new Random();
+        //If i take more than 100_000_000 elements, multithreading give me wrong sum
+        int[] array = new int[100000000];
+        for (int i = 0; i < array.length; i++) {
+            array[i] = random.nextInt(10);
+        }
+
+        BigInteger resultOfSumArray = BigInteger.ZERO;
+
+        System.out.println("Multithreading timer start");
+        long before = System.nanoTime();
+
+        int howMuchThread = 4;
+        MyThread2[] myThread2s = new MyThread2[howMuchThread];
+        int partOfArray = array.length / howMuchThread;
+
+        for (int i = 0, numOfThread = 0; i < array.length; i += partOfArray, numOfThread++) {
+            myThread2s[numOfThread] = new MyThread2(i, i + partOfArray, array);
+        }
+        for (int i = 0; i < myThread2s.length; i++) {
+            myThread2s[i].start();
+        }
+        for (int i = 0; i < myThread2s.length; i++) {
+            myThread2s[i].join();
+        }
+        for (int i = 0; i < myThread2s.length; i++) {
+            resultOfSumArray = resultOfSumArray.add(myThread2s[i].getResultOfSum());
+        }
+        long after = System.nanoTime();
+
+        System.out.println("Sum from multithreading = " + resultOfSumArray.toString());
+        System.out.println("Time from multithreading = " + (after - before));
+
+
+        System.out.println("Iteration timer start");
+        //or this
+        long before2 = System.nanoTime();
+        int sum2 = 0;
+        for (int a = 0; a < array.length; a++) {
+            sum2 += array[a];
+        }
+        long after2 = System.nanoTime();
+
+        System.out.println("Sum from iteration = " + sum2);
+        System.out.println("Time from iteration = " + (after2 - before2));
+
     }
 }
 
-class FolderIn extends Thread {
-    private File fileIn;
+class MyThread2 extends Thread {
+    private int startIndex;
+    private int finishIndex;
+    private int[] array;
 
-    FolderIn(File fileIn) {
-        this.fileIn = fileIn;
+    private BigInteger resultOfSum = BigInteger.ZERO;
+
+    public MyThread2(int startIndex, int finishIndex, int[] array) {
+        this.startIndex = startIndex;
+        this.finishIndex = finishIndex;
+        this.array = array;
     }
 
-    private InputStream inputStream;
-
-    public InputStream getInputStream() {
-        return inputStream;
-    }
-
-    @Override
-    public synchronized void run() {
-        try {
-            inputStream = new FileInputStream(fileIn);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-}
-
-class FolderOut extends Thread {
-
-    private File fileOut;
-    private InputStream inputStream;
-
-    public FolderOut(File fileOut, InputStream inputStream) {
-        this.fileOut = fileOut;
-        this.inputStream = inputStream;
-    }
-
-    private long howMuchTransferTo;
-
-    public long getHowMuchTransferTo() {
-        return howMuchTransferTo;
+    public BigInteger getResultOfSum() {
+        return resultOfSum;
     }
 
     @Override
-    public synchronized void run() {
-        try (OutputStream outputStream = new FileOutputStream(fileOut)) {
-            howMuchTransferTo = inputStream.transferTo(outputStream);
-            inputStream.close();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+    public void run() {
+        Thread thread = Thread.currentThread();
+        System.out.println(thread.getName() + " starting to make additions");
+        for (int i = startIndex; i < finishIndex; i++) {
+            resultOfSum = resultOfSum.add(BigInteger.valueOf(array[i]));
         }
     }
+
 }

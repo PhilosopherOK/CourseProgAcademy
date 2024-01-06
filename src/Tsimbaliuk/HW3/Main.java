@@ -1,6 +1,6 @@
-package Tsimbaliuk.HW2;
+package Tsimbaliuk.HW3;
 
-import Tsimbaliuk.HW3.WriteStudent;
+import Tsimbaliuk.HW4.WriteStudent;
 
 /*
 1) Создать класс Human.

@@ -1,61 +1,61 @@
 package Tsimbaliuk.HW7;
 
+
 /*
-1)Реализуйте корректные методы equals, hashCode для классов Человек, Студент и
-Группа. OK
-2)Реализуйте вспомогательный метод для проверки факта отсутствия эквивалентных
-студентов в группе OK
-3)Создайте класс-контейнер типа стек (класс в который можно добавлять и удалять
-объекты других классов, только в вершину стека), в который можно сохранять объекты
-произвольного типа. Создайте стек на основе массива Object.
-Реализуйте методы:
-● public void push(Object obj) добавления элемента в стек
-● public Object pop() получение с удалением элемента из вершины стека
-● public Object peek() получение элемента с вершины стека без удаления.
+Многопоточное программирование часть 2Файл
+
+1) Существуют три корабля. На каждом из них 10 ящиков груза.
+Они одновременно прибыли в порт в котором только два
+дока. Скорость разгрузки 1 ящик в 0.5 сек. Напишите
+программу которая управляя кораблями позволит им
+правильно разгрузить груз.
  */
-
-import java.util.Arrays;
-
 public class Main {
-    public static void main(String[] args) {
-        
+    public static void main(String[] args) throws InterruptedException {
+        Thread[] ships = new Thread[3];
+
+        for (int i = 0; i < 3; i++) {
+            ships[i] = new Thread(new Ship(i + 1));
+
+            if (i == 1) {
+                for (int j = 0; j < 2; j++) {
+                    ships[j].start();
+                }
+                for (int q = 0; q < 2; q++) {
+                    ships[q].join();
+                }
+            }
+            if(i == 2){
+                ships[i].start();
+                ships[i].join();
+            }
+        }
     }
 }
 
-class MyStack{
-    int index;
-    Object [] array = new Object[10];
+class Ship implements Runnable {
 
-    public MyStack() {
-        index = 0;
+    private int numberOfShip;
+
+    Ship(int numberOfShip) {
+        this.numberOfShip = numberOfShip;
     }
 
-    public Object peek(){
-        return array[index];
-    }
-    public Object pop(){
-        Object o = array[index];
-        array[index] = null;
-        index--;
-        selfReduce();
-        return o;
-    }
-    public void push(Object object){
-        selfAggrandizement();
-        array[index] = object;
-        index++;
-    }
-    public void selfAggrandizement(){
-        if(array[array.length - 1] == null){
-            Object[] newArray = Arrays.copyOf(array, array.length * 2);
-            array = newArray;
-        }
-    }
-    public void selfReduce(){
-        if(array[array.length / 4] == null && array.length != 10){
-            Object[] newArray = Arrays.copyOf(array, array.length / 2);
-            array = newArray;
+    synchronized
+    @Override
+    public void run() {
+        // unloads 10 boxes
+        for (int i = 1; i <= 10; i++) {
+            try {
+                System.out.println("Ship " + numberOfShip + " unload " + i + " box");
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
         }
     }
 
+    public int getNumberOfShip() {
+        return numberOfShip;
+    }
 }

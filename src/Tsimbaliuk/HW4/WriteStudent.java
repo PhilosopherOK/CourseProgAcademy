@@ -1,9 +1,9 @@
-package Tsimbaliuk.HW3;
+package Tsimbaliuk.HW4;
 
-import Tsimbaliuk.HW2.Gender;
-import Tsimbaliuk.HW2.Group;
-import Tsimbaliuk.HW2.GroupOverflowException;
-import Tsimbaliuk.HW2.Student;
+import Tsimbaliuk.HW3.Gender;
+import Tsimbaliuk.HW3.Group;
+import Tsimbaliuk.HW3.GroupOverflowException;
+import Tsimbaliuk.HW3.Student;
 
 import java.util.Scanner;
 

@@ -1,6 +1,4 @@
-package Tsimbaliuk.HW0;
-
-import java.util.Random;
+package Tsimbaliuk.HW1;
 
 /*
 1) Создайте класс Phone (Телефон) одним из свойств должен быть его номер. Создайте

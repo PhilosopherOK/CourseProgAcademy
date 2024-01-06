@@ -1,4 +1,4 @@
-package Tsimbaliuk.HW4;
+package Tsimbaliuk.HW5;
 /*
 2) Реализуйте отдельный класс GroupFileStorage в котором будут следующие методы:
         ● void saveGroupToCSV(Group gr) — запись группы в CSV файл
@@ -7,13 +7,14 @@ package Tsimbaliuk.HW4;
         (workFolder). Название файла определяется названием группы в нем сохраненной.
  */
 
-import Tsimbaliuk.HW2.Group;
-import Tsimbaliuk.HW2.GroupOverflowException;
-import Tsimbaliuk.HW2.Student;
+import Tsimbaliuk.HW3.Group;
+import Tsimbaliuk.HW3.GroupOverflowException;
+import Tsimbaliuk.HW3.Student;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 
@@ -47,11 +48,11 @@ public class GroupFileStorage {
     public static void saveGroupToCSV(Group group) throws IOException {
         File file = new File("AAAA/" + group.getGroupName() + ".csv");
         file.createNewFile();
-        Student[] students = group.getStudents();
+        ArrayList<Student> students = group.getStudents();
 
         try (PrintWriter printWriter = new PrintWriter(file)) {
-            for (int i = 0; i < students.length; i++) {
-                printWriter.println(students[i].toCSVString());
+            for (int i = 0; i < students.size(); i++) {
+                printWriter.println(students.get(i).toCSVString());
             }
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);

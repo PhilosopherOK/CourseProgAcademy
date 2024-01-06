@@ -1,4 +1,4 @@
-package Tsimbaliuk.HW2;
+package Tsimbaliuk.HW3;
 
 import java.util.Objects;
 
