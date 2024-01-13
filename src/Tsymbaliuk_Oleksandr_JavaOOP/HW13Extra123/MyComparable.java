@@ -1,4 +1,4 @@
-package Tsymbaliuk_Oleksandr_JavaOOP.HW13;
+package Tsymbaliuk_Oleksandr_JavaOOP.HW13Extra123;
 /*
 Функциональный интерфейс
 Comparable
@@ -15,5 +15,9 @@ Comparable
 длиннее имя тем больше объект. Ваша реализация Comparable<Cat> должна быть совместима с
 отношением эквивалентности (метод equals при необходимости можете также заменить).
  */
-public class Main {
+
+public class MyComparable {
+    public static void main(String[] args) {
+
+    }
 }

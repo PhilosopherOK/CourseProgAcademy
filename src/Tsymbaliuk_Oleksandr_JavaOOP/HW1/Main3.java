@@ -64,7 +64,7 @@ class Phone {
     }
 
     public void incomingCall(long number) {
-        System.out.println("Dead " + number + " the number is calling you: " + number);
+        System.out.println("Dead " + this.number + " the number is calling you: " + number);
     }
 
     public long getNumber() {

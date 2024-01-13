@@ -10,6 +10,7 @@ package Tsymbaliuk_Oleksandr_JavaOOP.HW5;
 import java.io.*;
 import java.util.Arrays;
 import java.util.Scanner;
+import java.util.function.Function;
 
 class Main3 {
     public static void main(String[] args) {
@@ -19,6 +20,8 @@ class Main3 {
         System.out.println("Enter second address");
         File file2 = new File(scanner.nextLine());
 
+//        Function<File, byte[]> function = ServiceForComparingFiles::getByteFromFile;
+
         System.out.println(ServiceForComparingFiles.comparingFiles(ServiceForComparingFiles.getByteFromFile(file1),
                 ServiceForComparingFiles.getByteFromFile(file2)));
     }
@@ -26,17 +29,21 @@ class Main3 {
 
 public class ServiceForComparingFiles {
 
-    public static boolean comparingFiles(byte[] bytes1, byte[] bytes2) {
+    public static boolean comparingFiles(byte[][] bytes1, byte[][] bytes2) {
         return Arrays.equals(bytes1, bytes2);
     }
 
-    public static byte[] getByteFromFile(File file) {
-        byte[] bytes = new byte[Integer.MAX_VALUE];
+    public static byte[][] getByteFromFile(File file) {
+        byte[] bytes = new byte[(int) file.length()];
+//        byte[][] bytes = new byte[Integer.MAX_VALUE][Integer.MAX_VALUE];
         try (InputStream inputStream = new FileInputStream(file)) {
-            inputStream.read(bytes);
+            int index = inputStream.read() / Integer.MAX_VALUE; //TODO
+
+
+//            inputStream.read(bytes[1]);
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
-        return bytes;
+        return new byte[][]{bytes};
     }
 }
