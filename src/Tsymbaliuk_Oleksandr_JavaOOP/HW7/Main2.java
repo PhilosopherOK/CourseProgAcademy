@@ -6,49 +6,84 @@ package Tsymbaliuk_Oleksandr_JavaOOP.HW7;
 
 
 import java.io.*;
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Main2 {
+
+    // i cant Integer.MAX_VALUE and Long.MAX_VALUE cause i have "Requested array size exceeds VM limit"
+    private static File folderIn = new File("A.csv");
+    private static File folderOut = new File("C.csv");
+    private static byte[] bytes = new byte[(int) folderIn.length()];
+
     public static void main(String[] args) throws InterruptedException, IOException {
-        File folderIn = new File("A.csv");
-        File folderOut = new File("C.csv");
-
-        FolderIn thread1 = new FolderIn(1, folderIn);
-        FolderIn thread2 = new FolderIn(2, folderIn);
-        Thread thread3 = new Thread(new FolderOut(thread1.getPartOfBytes(), folderOut, 1));
-        Thread thread4 = new Thread(new FolderOut(thread2.getPartOfBytes(), folderOut, 2));
-
-        thread2.start();
-        thread1.start();
-        thread2.join();
-        thread1.join();
-        System.out.println(folderIn.length());
 
 
-        thread3.start();
-        thread4.start();
-        thread3.join();
-        thread4.join();
+        Thread[] threads = new Thread[4];
+        for (int i = 0; i < threads.length; i++) {
+            if (i < threads.length / 2) {
+                threads[i] = new Thread(new FolderIn(folderIn, getBytes()));
+            } else {
+                threads[i] = new Thread(new FolderOut(folderOut, getBytes()));
+            }
+        }
+        for (int i = 0; i < threads.length; i++) {
+            threads[i].start();
+        }
+        for (int i = 0; i < threads.length; i++) {
+            threads[i].join();
+        }
 
+    }
 
-
-//        List<Byte> bytes = new ArrayList<>();
-//        try (InputStream inputStream = new FileInputStream(folderIn)) {
-//
-//            for (int i = 0; i < folderIn.length(); i++) {
-//                bytes.add((byte) inputStream.read());
-//            }
-//            System.out.println(bytes.toString());
-//
-//        }
-
-
+    synchronized static public byte[] getBytes() {
+        return bytes;
     }
 }
 
+class FolderIn implements Runnable {
+    private File file;
+    private byte[] bytes;
+
+    FolderIn(File file, byte[] bytes) {
+        this.file = file;
+        this.bytes = bytes;
+    }
+
+    @Override
+    public void run() {
+        Thread thread = Thread.currentThread();
+        System.out.println(thread.getName() + " starting reading from file");
+        try (InputStream inputStream = new FileInputStream(file)) {
+            inputStream.read(bytes);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+class FolderOut implements Runnable {
+
+    private File file;
+    private byte[] bytes;
+
+    public FolderOut(File file, byte[] bytes) {
+        this.file = file;
+        this.bytes = bytes;
+    }
+
+    @Override
+    public void run() {
+        Thread thread = Thread.currentThread();
+        System.out.println(thread.getName() + " starting writing from file");
+        try (OutputStream outputStream = new FileOutputStream(file)) {
+            outputStream.write(bytes);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+
+/*
 class FolderIn extends Thread {
 
     private int partOfTwo;
@@ -60,7 +95,7 @@ class FolderIn extends Thread {
         this.partOfTwo = partOfTwo;
         this.file = file;
         this.sizeOfFile = (int) file.length();
-        partOfBytes = new byte[sizeOfFile];
+        partOfBytes = new byte[sizeOfFile/partOfTwo];
     }
     public byte[] getPartOfBytes() {
         return partOfBytes;
@@ -105,16 +140,17 @@ class FolderOut implements Runnable {
     }
 
     private void pasteFile() {
-        try (OutputStream outputStream = new FileOutputStream(file)) {
-            for (int i = 0; i < partOfArr.length; i++) {
-                if(partOfTwo == 1){
-                    outputStream.write(partOfArr, 1, partOfArr.length - 2);
-                }else{
-                    outputStream.write(partOfArr, partOfArr.length-4, (partOfArr.length + partOfArr.length) -4);
-                }
 
-//                outputStream.write(partOfArr.get(i));
-            }
+        try (OutputStream outputStream = new FileOutputStream(file, true)) {
+            System.out.println(Arrays.toString(partOfArr));
+//            for (int i = 0; i < partOfArr.length; i++) {
+                outputStream.write(partOfArr);
+//                if(partOfTwo == 1){
+//                    outputStream.write(partOfArr, 1, partOfArr.length - 2);
+//                }else{
+//                    outputStream.write(partOfArr, partOfArr.length-4, (partOfArr.length + partOfArr.length) -4);
+//                }
+//            }
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -126,7 +162,7 @@ class FolderOut implements Runnable {
         pasteFile();
     }
 }
-
+*/
 
 //        FolderIn folderInThr = new FolderIn(folderIn);
 //        folderInThr.start();
