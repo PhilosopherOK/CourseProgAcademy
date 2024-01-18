@@ -20,30 +20,25 @@ class Main3 {
         System.out.println("Enter second address");
         File file2 = new File(scanner.nextLine());
 
-//        Function<File, byte[]> function = ServiceForComparingFiles::getByteFromFile;
+        Function<File, byte[]> function = ServiceForComparingFiles::getByteFromFile;
 
-        System.out.println(ServiceForComparingFiles.comparingFiles(ServiceForComparingFiles.getByteFromFile(file1),
-                ServiceForComparingFiles.getByteFromFile(file2)));
+        System.out.println(ServiceForComparingFiles.comparingFiles(function.apply(file1), function.apply(file2)));
     }
 }
 
 public class ServiceForComparingFiles {
 
-    public static boolean comparingFiles(byte[][] bytes1, byte[][] bytes2) {
+    public static boolean comparingFiles(byte[] bytes1, byte[] bytes2) {
         return Arrays.equals(bytes1, bytes2);
     }
 
-    public static byte[][] getByteFromFile(File file) {
-        byte[] bytes = new byte[(int) file.length()];
-//        byte[][] bytes = new byte[Integer.MAX_VALUE][Integer.MAX_VALUE];
+    public static byte[] getByteFromFile(File file) {
+        byte[] bytesFromFile = null;
         try (InputStream inputStream = new FileInputStream(file)) {
-            int index = inputStream.read() / Integer.MAX_VALUE; //TODO
-
-
-//            inputStream.read(bytes[1]);
+            bytesFromFile = inputStream.readAllBytes();
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
-        return new byte[][]{bytes};
+        return bytesFromFile;
     }
 }

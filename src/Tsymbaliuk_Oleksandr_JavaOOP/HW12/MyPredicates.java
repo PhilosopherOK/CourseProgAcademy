@@ -1,4 +1,4 @@
-package Tsymbaliuk_Oleksandr_JavaOOP.HW13Extra123;
+package Tsymbaliuk_Oleksandr_JavaOOP.HW12;
 /*
 Функциональный интерфейс
 Predicate
@@ -28,7 +28,7 @@ import java.util.function.BiPredicate;
 import java.util.function.IntPredicate;
 import java.util.function.Predicate;
 
-public class MyPredicate {
+public class MyPredicates {
     // №1
     public static void deleteFromListWithStartLetter(List<String> list, String startLetter) {
         list.removeIf(p -> p.startsWith(startLetter));
@@ -78,42 +78,6 @@ public class MyPredicate {
             }
         };
         return intPredicate.test(num);
-    }
-}
-
-class Cat {
-    private String name;
-    private int age;
-
-    public Cat(String name, int age) {
-        super();
-        this.name = name;
-        this.age = age;
-    }
-
-    public Cat() {
-        super();
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    @Override
-    public String toString() {
-        return "Cat [name=" + name + ", age=" + age + "]";
     }
 }
 
