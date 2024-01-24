@@ -6,6 +6,7 @@ public class Human {
     private String name;
     private String lastName;
     private Gender gender;
+    private int age;
 
     public Human() {
     }
@@ -14,6 +15,21 @@ public class Human {
         this.name = name;
         this.lastName = lastName;
         this.gender = gender;
+    }
+
+    public Human(String name, String lastName, Gender gender, int age) {
+        this.name = name;
+        this.lastName = lastName;
+        this.gender = gender;
+        this.age = age;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
     }
 
     public String getName() {

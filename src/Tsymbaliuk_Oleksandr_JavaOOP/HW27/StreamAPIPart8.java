@@ -8,5 +8,8 @@ Stream API
 чисел) в качестве разделителя используйте «;».
 2) Реализуйте файловый классификатор по размеру файлов.
  */
-public class Main {
+public class StreamAPIPart8 {
+    public static void main(String[] args) {
+
+    }
 }
