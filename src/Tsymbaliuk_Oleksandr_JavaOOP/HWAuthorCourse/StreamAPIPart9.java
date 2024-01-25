@@ -1,4 +1,4 @@
-package Tsymbaliuk_Oleksandr_JavaOOP.HW28;
+package Tsymbaliuk_Oleksandr_JavaOOP.HWAuthorCourse;
 /*
 Сетевое программирование)
 Домашнее задание
@@ -14,5 +14,5 @@ package Tsymbaliuk_Oleksandr_JavaOOP.HW28;
 метода он должен выполняться и результат работы опять же в виде
 html страницы должен возвращаться пользователю.
  */
-public class Main {
+public class StreamAPIPart9 {
 }

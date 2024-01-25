@@ -16,10 +16,11 @@ import java.util.function.Supplier;
 import java.util.stream.Collector;
 
 public class StreamAPIPart7 {
-    private static Set<Character> vowels = Set.of('a', 'e', 'y', 'u', 'i', 'o');
-    public static void main(String[] args) {
-        //#2
-        Map<String, List<String>> map = Arrays.stream("asdgf asdhjo gfgj5rt gdfhhg sdfjo".split(" "))
+    //#2
+    public static Map<String, List<String>> getMapWithVowelsStr(String string){
+        Set<Character> vowels = Set.of('a', 'e', 'y', 'u', 'i', 'o');
+
+        Map<String, List<String>> map = Arrays.stream(string.split(" "))
                 .collect(HashMap::new, (m, str) -> {
                     for (int i = 0; i < str.length(); i++) {
                         if (!m.containsKey("vowels")) {
@@ -31,7 +32,7 @@ public class StreamAPIPart7 {
                         }
                     }
                 }, HashMap::putAll);
-        System.out.println(map);
+        return map;
     }
 }
 
