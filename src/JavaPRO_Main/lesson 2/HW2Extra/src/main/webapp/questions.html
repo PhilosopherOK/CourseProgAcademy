@@ -4,25 +4,106 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Простая HTML-страница с вопросами и кнопками</title>
+  <style>
+    body {
+      background-color: #f5f5f5;
+      font-family: Arial, sans-serif;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+      border: 2px solid gold;
+      border-radius: 10px;
+      background-color: white;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+      color: gold;
+    }
+
+    h2 {
+      color: #333;
+      margin-top: 20px;
+    }
+
+    button {
+      background-color: gold;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      margin-right: 10px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #ffd700;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #ccc;
+      margin: 20px 0;
+    }
+
+    .submit-button {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    /* Additional Styles */
+    .container form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .container form h2 {
+      text-align: center;
+    }
+
+    .container form button {
+      width: 150px;
+    }
+
+    .container form .submit-button button {
+      background-color: #333;
+      margin-top: 20px;
+    }
+
+    .container form .submit-button button:hover {
+      background-color: #555;
+    }
+
+  </style>
 </head>
 <body>
-<h1>Опросник</h1>
+<div class="container">
+  <h1>Опросник</h1>
 
-<form id="questionForm" method="post" action="/submit_answers">
-  <h2>Вопрос 1: Что вы предпочитаете?</h2>
-  <button type="button" onclick="answerQuestion1('banana')">banana</button>
-  <button type="button" onclick="answerQuestion1('orange')">orange</button>
+  <form id="questionForm" method="post" action="/submit_answers">
+    <h2>Вопрос 1: Что вы предпочитаете?</h2>
+    <button type="button" onclick="answerQuestion1('banana')">banana</button>
+    <button type="button" onclick="answerQuestion1('orange')">orange</button>
 
-  <input type="hidden" id="answer1" name="answer1" value="">
+    <input type="hidden" id="answer1" name="answer1" value="">
 
-  <h2>Вопрос 2: Что вам нравится больше?</h2>
-  <button type="button" onclick="answerQuestion2('sleep')">sleep</button>
-  <button type="button" onclick="answerQuestion2('run')">run</button>
+    <h2>Вопрос 2: Что вам нравится больше?</h2>
+    <button type="button" onclick="answerQuestion2('sleep')">sleep</button>
+    <button type="button" onclick="answerQuestion2('run')">run</button>
 
-  <input type="hidden" id="answer2" name="answer2" value="">
-<hr>
-  <button type="button" onclick="submitForm()">Отправить ответы</button>
-</form>
+    <input type="hidden" id="answer2" name="answer2" value="">
+    <hr>
+    <div class="submit-button">
+      <button type="button" onclick="submitForm()">Отправить ответы</button>
+    </div>
+  </form>
+</div>
 
 <script>
   function answerQuestion1(answer) {

@@ -1,4 +1,4 @@
-package ua.kiev.prog;
+package JavaPRO_Main.lesson3.Reflection1.src.ua.kiev.prog;
 
 import java.lang.reflect.*;
 

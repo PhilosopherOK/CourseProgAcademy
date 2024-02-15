@@ -1,5 +1,3 @@
-package academy.prog;
-
 import jakarta.servlet.http.*;
 import java.io.IOException;
 

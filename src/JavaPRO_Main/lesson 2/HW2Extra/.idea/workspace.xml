@@ -9,19 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9912dd73-5555-4bd1-9b17-d2fd0efd3ca6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../JavaStart/HW7/SearchingForTheNextNumberOfASequence.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../JavaStart/HW7/SearchingForTheNextNumberOfASequence.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../JavaStart/HW8/TextEditorByRostislav.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../JavaStart/HW8/TextEditorByRostislav.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../Tsymbaliuk_Oleksandr_JavaOOP/classLectures/CL11/CL11.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Tsymbaliuk_Oleksandr_JavaOOP/classLectures/CL11/CL11.java" afterDir="false" />
-    </list>
+    <list default="true" id="9912dd73-5555-4bd1-9b17-d2fd0efd3ca6" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -67,7 +55,7 @@
   }
 }</component>
   <component name="RunManager">
-    <configuration name="tomcat-10.1.18" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="tomcat-10.1.18" ALTERNATIVE_JRE_ENABLED="true" ALTERNATIVE_JRE_PATH="C:\Program Files\JetBrains\IntelliJ IDEA 2023.1\jbr" nameIsGenerated="true">
+    <configuration name="tomcat-10.1.18" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="tomcat-10.1.18" ALTERNATIVE_JRE_ENABLED="true" ALTERNATIVE_JRE_PATH="jbr-17" nameIsGenerated="true">
       <option name="BROWSER_ID" value="98ca6316-2f89-46d9-a9e5-fa9e2b0625b3" />
       <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
@@ -166,10 +154,125 @@
       <updated>1707379455055</updated>
       <workItem from="1707379456051" duration="10810000" />
       <workItem from="1707407303897" duration="74000" />
+      <workItem from="1707893621067" duration="578000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="com.github.evgenys91.machinet.common.dslhistory.DslHistoryState">
+    <option name="historyDtoById">
+      <map>
+        <entry key="0d59b1">
+          <value>
+            <ChatHistoryModel>
+              <option name="contextFilesPaths">
+                <list>
+                  <option value="$PROJECT_DIR$/src/main/webapp/questions.html" />
+                </list>
+              </option>
+              <option name="id" value="0d59b1" />
+              <option name="initiateTms" value="1707893922144" />
+              <option name="request" value="&lt;!DOCTYPE html&gt;&#10;&lt;html lang=&quot;en&quot;&gt;&#10;&lt;head&gt;&#10;  &lt;meta charset=&quot;UTF-8&quot;&gt;&#10;  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;&#10;  &lt;title&gt;Простая HTML-страница с вопросами и кнопками&lt;/title&gt;&#10;  &lt;style&gt;&#10;    body {&#10;      background-color: #f5f5f5;&#10;      font-family: Arial, sans-serif;&#10;    }&#10;&#10;    .container {&#10;      max-width: 600px;&#10;      margin: 0 auto;&#10;      padding: 20px;&#10;      border: 2px solid gold;&#10;      border-radius: 10px;&#10;      background-color: white;&#10;      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);&#10;    }&#10;&#10;    h1 {&#10;      text-align: center;&#10;      color: gold;&#10;    }&#10;&#10;    h2 {&#10;      color: #333;&#10;    }&#10;&#10;    button {&#10;      background-color: gold;&#10;      color: white;&#10;      border: none;&#10;      padding: 10px 20px;&#10;      margin-right: 10px;&#10;      margin-bottom: 10px;&#10;      border-radius: 5px;&#10;      cursor: pointer;&#10;    }&#10;&#10;    button:hover {&#10;      background-color: #ffd700;&#10;    }&#10;&#10;    hr {&#10;      border: none;&#10;      border-top: 1px solid #ccc;&#10;      margin: 20px 0;&#10;    }&#10;&#10;    .submit-button {&#10;      text-align: center;&#10;    }&#10;  &lt;/style&gt;&#10;&lt;/head&gt;&#10;&lt;body&gt;&#10;&lt;div class=&quot;container&quot;&gt;&#10;  &lt;h1&gt;Опросник&lt;/h1&gt;&#10;&#10;  &lt;form id=&quot;questionForm&quot; method=&quot;post&quot; action=&quot;/submit_answers&quot;&gt;&#10;    &lt;h2&gt;Вопрос 1: Что вы предпочитаете?&lt;/h2&gt;&#10;    &lt;button type=&quot;button&quot; onclick=&quot;answerQuestion1('banana')&quot;&gt;banana&lt;/button&gt;&#10;    &lt;button type=&quot;button&quot; onclick=&quot;answerQuestion1('orange')&quot;&gt;orange&lt;/button&gt;&#10;&#10;    &lt;input type=&quot;hidden&quot; id=&quot;answer1&quot; name=&quot;answer1&quot; value=&quot;&quot;&gt;&#10;&#10;    &lt;h2&gt;Вопрос 2: Что вам нравится больше?&lt;/h2&gt;&#10;    &lt;button type=&quot;button&quot; onclick=&quot;answerQuestion2('sleep')&quot;&gt;sleep&lt;/button&gt;&#10;    &lt;button type=&quot;button&quot; onclick=&quot;answerQuestion2('run')&quot;&gt;run&lt;/button&gt;&#10;&#10;    &lt;input type=&quot;hidden&quot; id=&quot;answer2&quot; name=&quot;answer2&quot; value=&quot;&quot;&gt;&#10;    &lt;hr&gt;&#10;    &lt;div class=&quot;submit-button&quot;&gt;&#10;      &lt;button type=&quot;button&quot; onclick=&quot;submitForm()&quot;&gt;Отправить ответы&lt;/button&gt;&#10;    &lt;/div&gt;&#10;  &lt;/form&gt;&#10;&lt;/div&gt;&#10;&#10;&lt;script&gt;&#10;  function answerQuestion1(answer) {&#10;    document.getElementById('answer1').value = answer;&#10;  }&#10;&#10;  function answerQuestion2(answer) {&#10;    document.getElementById('answer2').value = answer;&#10;  }&#10;&#10;  function submitForm() {&#10;    document.getElementById('questionForm').submit();&#10;  }&#10;&lt;/script&gt;&#10;&lt;/body&gt;&#10;&lt;/html&gt;" />
+              <option name="response" value="" />
+              <option name="responseDescription" value="The HTML code you provided is a simple questionnaire form with two questions and multiple choice answers. When the user selects an answer, the corresponding value is stored in hidden input fields. When the user clicks the &quot;Отправить ответы&quot; (Submit Answers) button, the form is submitted to the &quot;/submit_answers&quot; endpoint.&#10;&#10;Is there anything specific you would like assistance with regarding this code?" />
+              <option name="responseFileName" value="" />
+              <option name="responseFilePath" value="" />
+              <option name="responseTms" value="1707893923700" />
+              <option name="usedLocalFilePaths">
+                <list>
+                  <option value="$PROJECT_DIR$/src/main/webapp/questions.html" />
+                </list>
+              </option>
+            </ChatHistoryModel>
+          </value>
+        </entry>
+        <entry key="7e3f97">
+          <value>
+            <ChatHistoryModel>
+              <option name="contextFilesPaths">
+                <list>
+                  <option value="$PROJECT_DIR$/src/main/webapp/questions.html" />
+                </list>
+              </option>
+              <option name="id" value="7e3f97" />
+              <option name="initiateTms" value="1707894006685" />
+              <option name="request" value="добавь фон с тирандой, сделай стиль как в игре world of warcraft" />
+              <option name="response" value="" />
+              <option name="responseDescription" value="Чтобы добавить фон с изображением Тиранды и сделать стиль, похожий на игру World of Warcraft, вам понадобится использовать CSS свойство `background-image` и настроить соответствующие стили. Вот обновленный CSS код с добавленным фоном и стилем, вдохновленным World of Warcraft:&#10;&#10;```html&#10;&lt;style&gt;&#10;body {&#10;  background-color: #000;&#10;  background-image: url('path/to/tyrande-image.jpg');&#10;  background-repeat: no-repeat;&#10;  background-size: cover;&#10;  font-family: 'Arial', sans-serif;&#10;}&#10;&#10;.container {&#10;  max-width: 600px;&#10;  margin: 0 auto;&#10;  padding: 20px;&#10;  border: 2px solid gold;&#10;  border-radius: 10px;&#10;  background-color: rgba(0, 0, 0, 0.8);&#10;  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);&#10;}&#10;&#10;h1 {&#10;  text-align: center;&#10;  color: gold;&#10;  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);&#10;}&#10;&#10;h2 {&#10;  color: #fff;&#10;  margin-top: 20px;&#10;}&#10;&#10;button {&#10;  background-color: #ffd700;&#10;  color: #000;&#10;  border: none;&#10;  padding: 10px 20px;&#10;  margin-right: 10px;&#10;  margin-bottom: 10px;&#10;  border-radius: 5px;&#10;  cursor: pointer;&#10;}&#10;&#10;button:hover {&#10;  background-color: #ffcc00;&#10;}&#10;&#10;hr {&#10;  border: none;&#10;  border-top: 1px solid #ccc;&#10;  margin: 20px 0;&#10;}&#10;&#10;.submit-button {&#10;  text-align: center;&#10;  margin-top: 20px;&#10;}&#10;&#10;/* Дополнительные стили */&#10;.container form {&#10;  display: flex;&#10;  flex-direction: column;&#10;  align-items: center;&#10;}&#10;&#10;.container form h2 {&#10;  text-align: center;&#10;}&#10;&#10;.container form button {&#10;  width: 150px;&#10;}&#10;&#10;.container form .submit-button button {&#10;  background-color: #333;&#10;  margin-top: 20px;&#10;}&#10;&#10;.container form .submit-button button:hover {&#10;  background-color: #555;&#10;}&#10;&#10;&lt;/style&gt;&#10;```&#10;&#10;Вам нужно заменить `'path/to/tyrande-image.jpg'` на путь к изображению Тиранды на вашем сервере или в вашем проекте. Это позволит установить фоновое изображение с Тирандой. Кроме того, внесены изменения в цвета текста, фона и кнопок, чтобы они соответствовали стилю World of Warcraft.&#10;&#10;Убедитесь, что у вас есть изображение Тиранды и указан правильный путь к нему. Если у вас возникнут еще вопросы, пожалуйста, дайте мне знать!" />
+              <option name="responseFileName" value="" />
+              <option name="responseFilePath" value="" />
+              <option name="responseTms" value="1707894015944" />
+              <option name="usedLocalFilePaths">
+                <list>
+                  <option value="$PROJECT_DIR$/src/main/webapp/questions.html" />
+                </list>
+              </option>
+            </ChatHistoryModel>
+          </value>
+        </entry>
+        <entry key="e16a93">
+          <value>
+            <ChatHistoryModel>
+              <option name="contextFilesPaths">
+                <list>
+                  <option value="$PROJECT_DIR$/src/main/webapp/questions.html" />
+                </list>
+              </option>
+              <option name="id" value="e16a93" />
+              <option name="initiateTms" value="1707893939559" />
+              <option name="request" value="можно на русском ?" />
+              <option name="response" value="" />
+              <option name="responseDescription" value="Конечно, вот обновленный CSS код для улучшения дизайна опросника:&#10;&#10;```html&#10;&lt;style&gt;&#10;body {&#10;  background-color: #f5f5f5;&#10;  font-family: Arial, sans-serif;&#10;}&#10;&#10;.container {&#10;  max-width: 600px;&#10;  margin: 0 auto;&#10;  padding: 20px;&#10;  border: 2px solid gold;&#10;  border-radius: 10px;&#10;  background-color: white;&#10;  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);&#10;}&#10;&#10;h1 {&#10;  text-align: center;&#10;  color: gold;&#10;}&#10;&#10;h2 {&#10;  color: #333;&#10;  margin-top: 20px;&#10;}&#10;&#10;button {&#10;  background-color: gold;&#10;  color: white;&#10;  border: none;&#10;  padding: 10px 20px;&#10;  margin-right: 10px;&#10;  margin-bottom: 10px;&#10;  border-radius: 5px;&#10;  cursor: pointer;&#10;}&#10;&#10;button:hover {&#10;  background-color: #ffd700;&#10;}&#10;&#10;hr {&#10;  border: none;&#10;  border-top: 1px solid #ccc;&#10;  margin: 20px 0;&#10;}&#10;&#10;.submit-button {&#10;  text-align: center;&#10;  margin-top: 20px;&#10;}&#10;&#10;/* Дополнительные стили */&#10;.container form {&#10;  display: flex;&#10;  flex-direction: column;&#10;  align-items: center;&#10;}&#10;&#10;.container form h2 {&#10;  text-align: center;&#10;}&#10;&#10;.container form button {&#10;  width: 150px;&#10;}&#10;&#10;.container form .submit-button button {&#10;  background-color: #333;&#10;  margin-top: 20px;&#10;}&#10;&#10;.container form .submit-button button:hover {&#10;  background-color: #555;&#10;}&#10;&#10;&lt;/style&gt;&#10;```&#10;&#10;Внесенные изменения включают:&#10;&#10;- Центрирование элементов формы в контейнере.&#10;- Добавление отступа сверху для каждого вопроса.&#10;- Увеличение ширины кнопок.&#10;- Изменение цвета фона кнопки отправки.&#10;&#10;Вы можете дальше настраивать эти стили, чтобы соответствовать вашему желаемому дизайну. Если у вас возникнут еще вопросы, пожалуйста, дайте мне знать!" />
+              <option name="responseFileName" value="" />
+              <option name="responseFilePath" value="" />
+              <option name="responseTms" value="1707893945759" />
+              <option name="usedLocalFilePaths">
+                <list>
+                  <option value="$PROJECT_DIR$/src/main/webapp/questions.html" />
+                </list>
+              </option>
+            </ChatHistoryModel>
+          </value>
+        </entry>
+        <entry key="f6d554">
+          <value>
+            <ChatHistoryModel>
+              <option name="contextFilesPaths">
+                <list>
+                  <option value="$PROJECT_DIR$/src/main/webapp/questions.html" />
+                </list>
+              </option>
+              <option name="id" value="f6d554" />
+              <option name="initiateTms" value="1707893932041" />
+              <option name="request" value="усовершенствуй дизайн" />
+              <option name="response" value="" />
+              <option name="responseDescription" value="To enhance the design of the questionnaire form, we can make a few modifications to the existing CSS styles. Here's an updated version of the CSS code with some improvements:&#10;&#10;```html&#10;&lt;style&gt;&#10;body {&#10;  background-color: #f5f5f5;&#10;  font-family: Arial, sans-serif;&#10;}&#10;&#10;.container {&#10;  max-width: 600px;&#10;  margin: 0 auto;&#10;  padding: 20px;&#10;  border: 2px solid gold;&#10;  border-radius: 10px;&#10;  background-color: white;&#10;  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);&#10;}&#10;&#10;h1 {&#10;  text-align: center;&#10;  color: gold;&#10;}&#10;&#10;h2 {&#10;  color: #333;&#10;  margin-top: 20px;&#10;}&#10;&#10;button {&#10;  background-color: gold;&#10;  color: white;&#10;  border: none;&#10;  padding: 10px 20px;&#10;  margin-right: 10px;&#10;  margin-bottom: 10px;&#10;  border-radius: 5px;&#10;  cursor: pointer;&#10;}&#10;&#10;button:hover {&#10;  background-color: #ffd700;&#10;}&#10;&#10;hr {&#10;  border: none;&#10;  border-top: 1px solid #ccc;&#10;  margin: 20px 0;&#10;}&#10;&#10;.submit-button {&#10;  text-align: center;&#10;  margin-top: 20px;&#10;}&#10;&#10;/* Additional Styles */&#10;.container form {&#10;  display: flex;&#10;  flex-direction: column;&#10;  align-items: center;&#10;}&#10;&#10;.container form h2 {&#10;  text-align: center;&#10;}&#10;&#10;.container form button {&#10;  width: 150px;&#10;}&#10;&#10;.container form .submit-button button {&#10;  background-color: #333;&#10;  margin-top: 20px;&#10;}&#10;&#10;.container form .submit-button button:hover {&#10;  background-color: #555;&#10;}&#10;&#10;&lt;/style&gt;&#10;```&#10;&#10;These modifications include:&#10;&#10;- Centering the form elements within the container.&#10;- Adding margin to the top of each question.&#10;- Increasing the width of the buttons.&#10;- Changing the background color of the submit button.&#10;&#10;Feel free to adjust these styles further to match your desired design. Let me know if there's anything else I can help you with!" />
+              <option name="responseFileName" value="" />
+              <option name="responseFilePath" value="" />
+              <option name="responseTms" value="1707893936852" />
+              <option name="usedLocalFilePaths">
+                <list>
+                  <option value="$PROJECT_DIR$/src/main/webapp/questions.html" />
+                </list>
+              </option>
+            </ChatHistoryModel>
+          </value>
+        </entry>
+        <entry key="greeting">
+          <value>
+            <ChatHistoryModel>
+              <option name="id" value="greeting" />
+              <option name="initiateTms" value="1707893918535" />
+              <option name="request" value="" />
+              <option name="response" value="" />
+              <option name="responseDescription" value="&#10;Hello, I am Machinet AI - context aware chat, which can help you with your daily programming routine. How can I help?" />
+              <option name="responseTms" value="1707893920278" />
+            </ChatHistoryModel>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
