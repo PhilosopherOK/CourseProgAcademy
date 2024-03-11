@@ -1,0 +1,45 @@
+Домашка по JPA:
+
+1) Створити таблицю «Меню в ресторані». Колонки: назва страви,
+його вартість, вага, наявність знижки. Написати код для
+додавання записів до таблиці та їх вибору за критеріями
+вартість від-до», «тільки зі знижкою, вибрати набір страв
+так, щоб їх сумарна вага була не більше 1 КГ.
+
+2. * Створити базу даних «Банк» з таблицями «Користувачі»,
+«Транзакції», «Рахунки» і «Курси валют». Рахунок буває 3-х видів:
+USD, EUR, UAH. Написати запити для поповнення рахунку в потрібній валюті, переводу коштів з одного рахунку на інший, конвертації валюти по курсу в рамках рахунків одного користувача. Написати запит на отримання сумарних коштів на рахунках одного користувача в UAH (по курсу).
+
+
+
+
+
+
+//            switch (fromCurrency.toUpperCase()+toCurrency.toUpperCase()) {
+//                case "UAHUSD":
+//                    double resultingRecalculation = ExchangeRates.UAHtoUSD * howMuch;
+//                    topUpOrWithdraw(howMuch, fromCurrency, false);
+//                    topUpOrWithdraw(resultingRecalculation, toCurrency, true);
+//                case "UAHEUR":
+//                    resultingRecalculation = ExchangeRates.UAHtoEUR * howMuch;
+//                    topUpOrWithdraw(howMuch, fromCurrency, false);
+//                    topUpOrWithdraw(resultingRecalculation, toCurrency, true);
+//                case "USDUAH":
+//                    resultingRecalculation = ExchangeRates.USDtoUAH * howMuch;
+//                    topUpOrWithdraw(howMuch, fromCurrency, false);
+//                    topUpOrWithdraw(resultingRecalculation, toCurrency, true);
+//                case "USDEUR":
+//                    resultingRecalculation = ExchangeRates.USDtoEUR * howMuch;
+//                    topUpOrWithdraw(howMuch, fromCurrency, false);
+//                    topUpOrWithdraw(resultingRecalculation, toCurrency, true);
+//                case "EURUAH":
+//                    resultingRecalculation = ExchangeRates.EURtoUAH * howMuch;
+//                    topUpOrWithdraw(howMuch, fromCurrency, false);
+//                    topUpOrWithdraw(resultingRecalculation, toCurrency, true);
+//                case "EURUSD":
+//                    resultingRecalculation = ExchangeRates.EURtoUSD * howMuch;
+//                    topUpOrWithdraw(howMuch, fromCurrency, false);
+//                    topUpOrWithdraw(resultingRecalculation, toCurrency, true);
+//                default:
+//                    System.out.println("Wrong currency !");
+//            }

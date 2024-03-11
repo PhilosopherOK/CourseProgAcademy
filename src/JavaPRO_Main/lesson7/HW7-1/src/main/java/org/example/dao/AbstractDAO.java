@@ -3,6 +3,7 @@ package org.example.dao;
 import org.example.utils.Id;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -36,7 +37,7 @@ public abstract class AbstractDAO<T> {
 
                 sql.append(f.getName()).append(" ");
 
-                if (f.getType() == int.class) {
+                if (f.getType() == Integer.class) {
                     sql.append("INT,");
                 } else if (f.getType() == String.class) {
                     sql.append("VARCHAR(100),");
@@ -176,94 +177,63 @@ public abstract class AbstractDAO<T> {
         }
     }
 
-    public List<T> getAll(Class<T> cls, int age) {
-        List<T> res = new ArrayList<>();
-
-        try {
-            try (Statement st = conn.createStatement()) {
-                try (ResultSet rs = st.executeQuery("SELECT * FROM " + table + " WHERE age=" + age + ";")) {
-                    ResultSetMetaData md = rs.getMetaData();
-                    //SELECT * FROM Clients WHERE age=2;
-                    while (rs.next()) {
-                        T t = cls.getDeclaredConstructor().newInstance(); //!!!
-
-                        for (int i = 1; i <= md.getColumnCount(); i++) {
-                            String columnName = md.getColumnName(i);
-                            Field field = cls.getDeclaredField(columnName);
-                            field.setAccessible(true);
-
-                            field.set(t, rs.getObject(columnName));
-                        }
-
-                        res.add(t);
-                    }
-                }
-            }
-
-            return res;
-        } catch (Exception ex) {
-            throw new RuntimeException(ex);
-        }
-    }
-    public List<T> getAll(Class<T> cls, String name, int age) {
-        List<T> res = new ArrayList<>();
-
-        try {
-            try (Statement st = conn.createStatement()) {
-                try (ResultSet rs = st.executeQuery("SELECT * FROM " + table + " WHERE name='" + name + "' AND age=" + age + ";")) {
-                    ResultSetMetaData md = rs.getMetaData();
-                    //SELECT * FROM Clients WHERE name='test2' AND age=2;
-
-                    while (rs.next()) {
-                        T t = cls.getDeclaredConstructor().newInstance(); //!!!
-
-                        for (int i = 1; i <= md.getColumnCount(); i++) {
-                            String columnName = md.getColumnName(i);
-                            Field field = cls.getDeclaredField(columnName);
-                            field.setAccessible(true);
-
-                            field.set(t, rs.getObject(columnName));
-                        }
-
-                        res.add(t);
-                    }
-                }
-            }
-
-            return res;
-        } catch (Exception ex) {
-            throw new RuntimeException(ex);
-        }
-    }
 
     public List<T> getAll(Class<T> cls, String[] oddFileNameEvenFileValue) {
-        if (oddFileNameEvenFileValue.length % 2 != 0) {
-            return null;
-        }
-        List<T> res = new ArrayList<>();
+        if (oddFileNameEvenFileValue.length % 2 != 0) return null;
 
-        try {
-            try (Statement st = conn.createStatement()) {
-                try (ResultSet rs = st.executeQuery("SELECT * FROM " + table)) {
-                    ResultSetMetaData md = rs.getMetaData();
+        String sqlQuery = createAQueryFromData(cls, oddFileNameEvenFileValue);
 
-                    while (rs.next()) {
-                        T t = cls.getDeclaredConstructor().newInstance(); //!!!
-                        for (int i = 1; i <= md.getColumnCount(); i++) {
-                            String columnName = md.getColumnName(i);
-                            Field field = cls.getDeclaredField(columnName);
-                            field.setAccessible(true);
+            List<T> res = new ArrayList<>();
+            try {
+                try (Statement st = conn.createStatement()) {
+                    try (ResultSet rs = st.executeQuery(sqlQuery)) {
+                        ResultSetMetaData md = rs.getMetaData();
 
-                            field.set(t, rs.getObject(columnName));
+                        while (rs.next()) {
+                            T t = cls.getDeclaredConstructor().newInstance(); //!!!
+                            for (int i = 1; i <= md.getColumnCount(); i++) {
+                                String columnName = md.getColumnName(i);
+                                Field field = cls.getDeclaredField(columnName);
+                                field.setAccessible(true);
+
+                                field.set(t, rs.getObject(columnName));
+                            }
+                            res.add(t);
                         }
-                        res.add(t);
                     }
                 }
+                return res;
+            } catch (Exception ex) {
+                throw new RuntimeException(ex);
             }
-            return res;
-        } catch (Exception ex) {
-            throw new RuntimeException(ex);
         }
+
+    private String createAQueryFromData(Class<T> cls, String[] oddFileNameEvenFileValue){
+        StringBuilder sqlQuery = new StringBuilder("SELECT * FROM " + table + " WHERE ");
+        T clazz = null;
+        try {
+            clazz = (T) cls.getDeclaredConstructor().newInstance();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        Field[] fields = clazz.getClass().getDeclaredFields();
+        for (int i = 0; i < fields.length; i++) {
+            for (int j = 0; j < oddFileNameEvenFileValue.length; j += 2) {
+                if (fields[i].getName().equals(oddFileNameEvenFileValue[j])) {
+                    sqlQuery.append(oddFileNameEvenFileValue[j] + "=");
+                    if (fields[i].getType() == String.class)
+                        sqlQuery.append("'");
+                    sqlQuery.append(oddFileNameEvenFileValue[j + 1]);
+                    if (fields[i].getType() == String.class)
+                        sqlQuery.append("'");
+                    sqlQuery.append(" AND ");
+                }
+            }
+        }
+        sqlQuery = new StringBuilder(sqlQuery.substring(0, sqlQuery.length() - 5));
+        sqlQuery.append(";");
+        return sqlQuery.toString();
     }
 
     private Field getPrimaryKeyField(T t, Field[] fields) {
