@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contactList>
+    <contact>
+        <email>asdfgasd1</email>
+        <name>baby1</name>
+        <phone>0908901</phone>
+        <surname>cris1</surname>
+    </contact>
+    <contact>
+        <email>asdfgasd2</email>
+        <name>baby2</name>
+        <phone>0908902</phone>
+        <surname>cris2</surname>
+    </contact>
+    <contact>
+        <email>asdfgasd3</email>
+        <name>baby3</name>
+        <phone>0908903</phone>
+        <surname>cris3</surname>
+    </contact>
+</contactList>
