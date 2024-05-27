@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Main Page</title>
+    <style>
+        .photo-container {
+            display: flex;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+        }
+        .photo-container li {
+            list-style-type: none;
+            margin: 10px;
+        }
+        .photo-container img {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+        }
+        .photo-container ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .photo-container ul li {
+            flex: 0 0 auto;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+<h1>Upload Photo</h1>
+<form th:action="@{/main/postPhoto}" method="post" enctype="multipart/form-data">
+    <label for="file">Choose file:</label>
+    <input type="file" id="file" name="multipartFile" accept="image/png, image/jpeg" required>
+    <button type="submit">Upload</button>
+</form>
+
+<div th:if="${errorMessage}" class="error">
+    <p th:text="${errorMessage}"></p>
+</div>
+
+<form th:action="@{/main/createAlbum}" method="post">
+    <label for="nameOfAlbum">Enter the name of album:</label>
+    <input type="text" id="nameOfAlbum" name="nameOfAlbum" required>
+    <button type="submit">Create</button>
+</form>
+
+
+<hr/>
+
+<form th:action="@{/main/getAnyPage}" method="get">
+    <label for="albumSelect1">Choose an album what u need to see:</label>
+    <select id="albumSelect1" name="nameOfAlbum">
+        <option th:each="album : ${albumsName}" th:value="${album}" th:text="${album}">Album</option>
+    </select>
+    <button type="submit">View Photos</button>
+</form>
+
+<hr/>
+<h2>Display photos from album <span th:text="${selectedNameOfAlbum}"></span></h2>
+<form th:action="@{/main/changeAlbum}" method="post">
+
+    <div class="photo-container">
+        <ul>
+            <th:block th:each="photo : ${photos.content}">
+                <li>
+                    <input type="checkbox" th:id="'photo_' + ${photo.id}" th:name="photoIds" th:value="${photo.id}">
+                    <label th:for="'photo_' + ${photo.id}">
+                        <img th:src="@{/images/{photoPath}(photoPath=${photo.pathOfPhoto})}" alt="Photo">
+                    </label>
+                </li>
+            </th:block>
+        </ul>
+    </div>
+    <br>
+    <label for="albumSelect2">Select an album to add selected photos there:</label>
+    <select id="albumSelect2" name="nameOfAlbum">
+        <option th:each="album : ${albumsName}" th:value="${album}" th:text="${album}"></option>
+    </select>
+    <br>
+    <button type="submit">Change Album</button>
+</form>
+
+
+Navigation
+<div class="pagination">
+    <ul>
+        <li th:if="${photos.hasPrevious()}">
+            <a th:href="@{/main/{nameOfAlbum}/{page}(nameOfAlbum=${selectedNameOfAlbum}, page=${photos.previousPageable.pageNumber})}">Previous</a>
+        </li>
+        <li th:if="${photos.hasNext()}">
+            <a th:href="@{/main/{nameOfAlbum}/{page}(nameOfAlbum=${selectedNameOfAlbum}, page=${photos.nextPageable.pageNumber})}">Next</a>
+        </li>
+    </ul>
+</div>
+</body>
+</html>
